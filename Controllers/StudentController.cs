@@ -14,7 +14,7 @@ namespace StudentController.StudentController
             [HttpPost]
             public IActionResult Index(string canhA, string canhB, string canhC)
             {
-                double A, B, C, a =0, b =0, c =0;
+                double tong,A, B, C, a =0, b =0, c =0;
                 string ketqua;
 
                 if(!String.IsNullOrEmpty(canhA)) a = Convert.ToDouble(canhA);
@@ -28,23 +28,30 @@ namespace StudentController.StudentController
                     A = Math.Pow(b,2) + Math.Pow(c,2);
                     B = Math.Pow(a,2) + Math.Pow(c,2);
                     C = Math.Pow(b,2) + Math.Pow(a,2);
+                    tong = a+b;
 
-                    if(Math.Pow(a,2)==A || Math.Pow(b,2)==B || Math.Pow(c,2)==C )
+                    if(tong <=c){
+                        ketqua="Đây không phải tam giác";
+                    }
+
+                    else if(Math.Pow(a,2)==A || Math.Pow(b,2)==B || Math.Pow(c,2)==C )
                     {
                         ketqua= "Đây là tam giác vuông";
                     }
+                    
                     else if( a ==b && b == c && c == a){
                         ketqua= "Đây là tam giác đều";
                     }
                     else if( a ==b || b == c || c == a){
                         ketqua= "Đây là tam giác cân";
                     }
-                    else if( Math.Pow(a,2) + Math.Pow(b,2) >Math.Pow(c,2) || Math.Pow(a,2) + Math.Pow(c,2) > Math.Pow(b,2) || Math.Pow(b,2) + Math.Pow(c,2) >Math.Pow(a,2) ){
+                    else if( Math.Pow(a,2) + Math.Pow(b,2) >Math.Pow(c,2)  ){
                         ketqua= "Đây là tam giác nhọn";
                     }
-                    else if( Math.Pow(a,2) + Math.Pow(b,2) < Math.Pow(c,2) || Math.Pow(a,2) + Math.Pow(c,2) < Math.Pow(b,2) || Math.Pow(b,2) + Math.Pow(c,2) < Math.Pow(a,2) ){
+                    else if( Math.Pow(a,2) + Math.Pow(b,2) < Math.Pow(c,2)  ){
                         ketqua= "Đây là tam giác tù";
                     }
+                    
                     else{
                         ketqua = "Đây là tam giác thường";
                     }
