@@ -14,7 +14,7 @@ namespace StudentController.StudentController
             [HttpPost]
             public IActionResult Index(string canhA, string canhB, string canhC)
             {
-                double tong,A, B, C, a =0, b =0, c =0;
+                double tong1,tong2,tong3,A, B, C, a =0, b =0, c =0;
                 string ketqua;
 
                 if(!String.IsNullOrEmpty(canhA)) a = Convert.ToDouble(canhA);
@@ -28,9 +28,12 @@ namespace StudentController.StudentController
                     A = Math.Pow(b,2) + Math.Pow(c,2);
                     B = Math.Pow(a,2) + Math.Pow(c,2);
                     C = Math.Pow(b,2) + Math.Pow(a,2);
-                    tong = a+b;
+                    tong1 = a+b;
+                    tong2 = a+c;
+                    tong3 = b+c;
 
-                    if(tong <=c){
+
+                    if(tong1 <=c || tong2 <= b || tong3 <= a){
                         ketqua="Đây không phải tam giác";
                     }
 
